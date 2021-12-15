@@ -7,11 +7,13 @@ import com.bridgelabz.greetingapp.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
     public class GreetingController {
         private static final String template = "Hello, %s!";
+        private static final String template2 = "Hello, %s , %s!";
         private final AtomicLong counter = new AtomicLong();
 
         /*
@@ -51,6 +53,10 @@ import java.util.concurrent.atomic.AtomicLong;
         @GetMapping("/find")
         public User findGreetById(@RequestParam long id) {
             return greetingService.getById(id);
+        }
+        @GetMapping("/allgreetings")
+        public List<User> findAllGreeting() {
+            return greetingService.getAllGreetingMessages();
         }
 
 
