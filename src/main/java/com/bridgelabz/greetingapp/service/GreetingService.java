@@ -1,11 +1,13 @@
 package com.bridgelabz.greetingapp.service;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bridgelabz.greetingapp.dto.UserDto;
 import com.bridgelabz.greetingapp.model.Greeting;
 import com.bridgelabz.greetingapp.model.User;
+import com.bridgelabz.greetingapp.repository.IGreetingRepository;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -13,6 +15,9 @@ import java.util.concurrent.atomic.AtomicLong;
 public class GreetingService implements IGreetingService {
     private static final String template = "Hello world";
     private final AtomicLong counter = new AtomicLong();
+    @Autowired
+    IGreetingRepository iGreetingRepository;
+
 
 
     @Override
